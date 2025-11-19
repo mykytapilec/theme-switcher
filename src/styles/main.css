@@ -1,5 +1,31 @@
 :root {
   color-scheme: light;
+
+  --font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --font-size-base: 1rem;
+  --line-height-base: 1.5;
+
+  --color-page-background: #f4f5f7;
+  --color-surface: #ffffff;
+  --color-text: #1f2937;
+  --color-text-muted: #6b7280;
+  --color-border: #d1d5db;
+  --color-accent: #2563eb;
+  --color-accent-contrast: #ffffff;
+
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+
+  --shadow-card: 0 10px 30px rgb(15 23 42 / 0.08);
 }
 
 * {
@@ -7,11 +33,163 @@
 }
 
 html {
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
 }
 
 body {
+  min-width: 320px;
+  min-height: 100vh;
   margin: 0;
+  background-color: var(--color-page-background);
+  color: var(--color-text);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.theme-switcher {
+  width: min(100% - 2rem, 960px);
+  margin: 0 auto;
+  padding: var(--spacing-2xl) 0;
+}
+
+.theme-switcher__header {
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+.theme-switcher__header h1 {
+  margin: 0 0 var(--spacing-sm);
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.1;
+}
+
+.theme-switcher__header p {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--color-text-muted);
+}
+
+.theme-switcher__controls,
+.theme-switcher__preview {
+  margin-bottom: var(--spacing-xl);
+}
+
+.theme-switcher__controls h2,
+.theme-switcher__preview h2 {
+  margin: 0 0 var(--spacing-md);
+  font-size: 1.25rem;
+}
+
+.theme-switcher__controls fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.theme-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.theme-options input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.theme-options label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease;
+}
+
+.theme-options label:hover {
+  border-color: var(--color-accent);
+}
+
+.theme-options input:checked + label {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+.theme-options input:focus-visible + label {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.preview-card {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.preview-card__content {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--spacing-2xl);
+  text-align: center;
+}
+
+.preview-card__eyebrow {
+  margin: 0 0 var(--spacing-sm);
+  color: var(--color-accent);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.preview-card__title {
+  margin: 0 0 var(--spacing-sm);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  line-height: 1.2;
+}
+
+.preview-card__description {
+  margin: 0 0 var(--spacing-lg);
+  color: var(--color-text-muted);
+}
+
+.preview-card button {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+.preview-card button:hover {
+  filter: brightness(0.9);
+}
+
+.preview-card button:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 .visually-hidden {
@@ -24,4 +202,24 @@ body {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+@media (max-width: 600px) {
+  .theme-switcher {
+    width: min(100% - 1.5rem, 960px);
+    padding: var(--spacing-xl) 0;
+  }
+
+  .theme-options {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .theme-options label {
+    width: 100%;
+  }
+
+  .preview-card__content {
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
 }
