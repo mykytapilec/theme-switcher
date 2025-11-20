@@ -14,67 +14,74 @@
     <title>Theme Switcher</title>
   </head>
   <body>
-    <main class="theme-switcher">
-      <header class="theme-switcher__header">
-        <h1>Theme Switcher</h1>
-        <p>Select a theme to change the appearance of the preview card.</p>
-      </header>
+    <div class="theme-app">
+      <input
+        type="radio"
+        id="theme-light"
+        name="theme"
+        value="light"
+        checked
+      />
+      <input
+        type="radio"
+        id="theme-dark"
+        name="theme"
+        value="dark"
+      />
+      <input
+        type="radio"
+        id="theme-custom"
+        name="theme"
+        value="custom"
+      />
 
-      <section
-        class="theme-switcher__controls"
-        aria-labelledby="theme-switcher-title"
-      >
-        <h2 id="theme-switcher-title">Choose a theme</h2>
+      <main class="theme-switcher">
+        <header class="theme-switcher__header">
+          <h1>Theme Switcher</h1>
+          <p>Select a theme to change the appearance of the preview card.</p>
+        </header>
 
-        <fieldset>
-          <legend class="visually-hidden">Available themes</legend>
+        <section
+          class="theme-switcher__controls"
+          aria-labelledby="theme-switcher-title"
+        >
+          <h2 id="theme-switcher-title">Choose a theme</h2>
 
-          <div class="theme-options">
-            <input
-              type="radio"
-              id="theme-light"
-              name="theme"
-              value="light"
-              checked
-            />
-            <label for="theme-light">Light</label>
+          <fieldset>
+            <legend class="visually-hidden">Available themes</legend>
 
-            <input
-              type="radio"
-              id="theme-dark"
-              name="theme"
-              value="dark"
-            />
-            <label for="theme-dark">Dark</label>
+            <div class="theme-options">
+              <label for="theme-light">Light</label>
+              <label for="theme-dark">Dark</label>
+              <label for="theme-custom">Custom</label>
+            </div>
+          </fieldset>
+        </section>
 
-            <input
-              type="radio"
-              id="theme-custom"
-              name="theme"
-              value="custom"
-            />
-            <label for="theme-custom">Custom</label>
-          </div>
-        </fieldset>
-      </section>
+        <section
+          class="theme-switcher__preview"
+          aria-labelledby="preview-title"
+        >
+          <h2 id="preview-title">Preview</h2>
 
-      <section
-        class="theme-switcher__preview"
-        aria-labelledby="preview-title"
-      >
-        <h2 id="preview-title">Preview</h2>
+          <article class="preview-card">
+            <div class="preview-card__content">
+              <p class="preview-card__eyebrow">Theme preview</p>
 
-        <article class="preview-card">
-          <div class="preview-card__content">
-            <p class="preview-card__eyebrow">Theme preview</p>
-            <h3 class="preview-card__title">A simple theme switcher</h3>
-            <p class="preview-card__description">
-              This card will change its appearance based on the selected theme.
-            </p>
-            <button type="button">Learn more</button>
-          </div>
-        </article>
-      </section>
-    </main>
+              <h3 class="preview-card__title">
+                A simple theme switcher
+              </h3>
+
+              <p class="preview-card__description">
+                This card will change its appearance based on the selected
+                theme.
+              </p>
+
+              <button type="button">Learn more</button>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
   </body>
 </html>
