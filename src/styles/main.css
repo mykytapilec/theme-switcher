@@ -43,6 +43,8 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
+  background-color: var(--color-page-background);
+  color: var(--color-text);
 }
 
 button,
@@ -168,17 +170,13 @@ button {
   transform: translateY(-1px);
 }
 
-#theme-light:checked ~ .theme-switcher label[for="theme-light"],
-#theme-dark:checked ~ .theme-switcher label[for="theme-dark"],
-#theme-custom:checked ~ .theme-switcher label[for="theme-custom"] {
+.theme-options input:checked + label {
   border-color: var(--color-accent);
   background-color: var(--color-accent);
   color: var(--color-accent-contrast);
 }
 
-#theme-light:focus-visible ~ .theme-switcher label[for="theme-light"],
-#theme-dark:focus-visible ~ .theme-switcher label[for="theme-dark"],
-#theme-custom:focus-visible ~ .theme-switcher label[for="theme-custom"] {
+.theme-options input:focus-visible + label {
   outline: 3px solid var(--color-accent);
   outline-offset: 2px;
 }
