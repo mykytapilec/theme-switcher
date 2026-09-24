@@ -3,19 +3,78 @@
   <head>
     <meta charset="UTF-8" />
     <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
     />
     <meta
-        name="description"
-        content="A theme switcher built with HTML and CSS."
+      name="description"
+      content="A theme switcher built with HTML and CSS."
     />
     <link rel="stylesheet" href="/src/styles/main.css" />
     <title>Theme Switcher</title>
   </head>
   <body>
-    <main>
-      <h1>Theme Switcher</h1>
+    <main class="theme-switcher">
+      <header class="theme-switcher__header">
+        <h1>Theme Switcher</h1>
+        <p>Select a theme to change the appearance of the preview card.</p>
+      </header>
+
+      <section
+        class="theme-switcher__controls"
+        aria-labelledby="theme-switcher-title"
+      >
+        <h2 id="theme-switcher-title">Choose a theme</h2>
+
+        <fieldset>
+          <legend class="visually-hidden">Available themes</legend>
+
+          <div class="theme-options">
+            <input
+              type="radio"
+              id="theme-light"
+              name="theme"
+              value="light"
+              checked
+            />
+            <label for="theme-light">Light</label>
+
+            <input
+              type="radio"
+              id="theme-dark"
+              name="theme"
+              value="dark"
+            />
+            <label for="theme-dark">Dark</label>
+
+            <input
+              type="radio"
+              id="theme-custom"
+              name="theme"
+              value="custom"
+            />
+            <label for="theme-custom">Custom</label>
+          </div>
+        </fieldset>
+      </section>
+
+      <section
+        class="theme-switcher__preview"
+        aria-labelledby="preview-title"
+      >
+        <h2 id="preview-title">Preview</h2>
+
+        <article class="preview-card">
+          <div class="preview-card__content">
+            <p class="preview-card__eyebrow">Theme preview</p>
+            <h3 class="preview-card__title">A simple theme switcher</h3>
+            <p class="preview-card__description">
+              This card will change its appearance based on the selected theme.
+            </p>
+            <button type="button">Learn more</button>
+          </div>
+        </article>
+      </section>
     </main>
   </body>
 </html>
