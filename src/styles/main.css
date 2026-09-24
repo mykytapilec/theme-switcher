@@ -13,6 +13,7 @@
   --color-border: #d1d5db;
   --color-accent: #2563eb;
   --color-accent-contrast: #ffffff;
+  --color-card-heading: #111827;
 
   --spacing-xs: 0.5rem;
   --spacing-sm: 0.75rem;
@@ -55,8 +56,53 @@ button {
   cursor: pointer;
 }
 
+.theme-app {
+  min-height: 100vh;
+  background-color: var(--color-page-background);
+  color: var(--color-text);
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+.theme-app:has(#theme-dark:checked) {
+  color-scheme: dark;
+
+  --color-page-background: #111827;
+  --color-surface: #1f2937;
+  --color-text: #f9fafb;
+  --color-text-muted: #d1d5db;
+  --color-border: #4b5563;
+  --color-accent: #60a5fa;
+  --color-accent-contrast: #111827;
+  --color-card-heading: #f9fafb;
+}
+
+.theme-app:has(#theme-custom:checked) {
+  color-scheme: light;
+
+  --color-page-background: #fff7ed;
+  --color-surface: #ffffff;
+  --color-text: #431407;
+  --color-text-muted: #9a3412;
+  --color-border: #fdba74;
+  --color-accent: #ea580c;
+  --color-accent-contrast: #ffffff;
+  --color-card-heading: #431407;
+}
+
+#theme-light,
+#theme-dark,
+#theme-custom {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
 .theme-switcher {
   width: min(100% - 2rem, 960px);
+  min-height: 100vh;
   margin: 0 auto;
   padding: var(--spacing-2xl) 0;
 }
@@ -101,13 +147,6 @@ button {
   gap: var(--spacing-sm);
 }
 
-.theme-options input {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-}
-
 .theme-options label {
   display: inline-flex;
   align-items: center;
@@ -122,11 +161,13 @@ button {
   transition:
     background-color 150ms ease,
     border-color 150ms ease,
-    color 150ms ease;
+    color 150ms ease,
+    transform 150ms ease;
 }
 
 .theme-options label:hover {
   border-color: var(--color-accent);
+  transform: translateY(-1px);
 }
 
 .theme-options input:checked + label {
@@ -146,6 +187,10 @@ button {
   border-radius: var(--radius-lg);
   background-color: var(--color-surface);
   box-shadow: var(--shadow-card);
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
 }
 
 .preview-card__content {
@@ -166,6 +211,7 @@ button {
 
 .preview-card__title {
   margin: 0 0 var(--spacing-sm);
+  color: var(--color-card-heading);
   font-size: clamp(1.5rem, 4vw, 2rem);
   line-height: 1.2;
 }
@@ -181,10 +227,16 @@ button {
   border-radius: var(--radius-sm);
   background-color: var(--color-accent);
   color: var(--color-accent-contrast);
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease,
+    transform 150ms ease;
 }
 
 .preview-card button:hover {
   filter: brightness(0.9);
+  transform: translateY(-1px);
 }
 
 .preview-card button:focus-visible {
